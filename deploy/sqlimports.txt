@@ -1,0 +1,105 @@
+#Import the bins and pallets
+
+#update bin to pallet associations
+
+#import users, must give unique email address
+
+#import clients, add all to provider
+
+#import descriptions, add new storageitem for each (Manual CSV paste into table)
+
+
+-- IMPORT current transactions and pallet-contents into new tables
+import-transactions.csv and import-pallet-contents.csv
+#remove pallets from transactions import that are not currently in pallets import
+ -- first do a select to see what they are because it should be nothing
+DELETE FROM import-transactions WHERE import-transactions WHERE palletID NOT IN (SELECT id from storagepallet)
+
+
+
+The remaining items were done with scripting
+
+ - create storage requests
+ - add the actual pallet inventory
+ - update pallet inventory with item id
+ - update pallet inventory with storage request id
+ - update storage request with actual qty
+
+
+
+Import summary for all pallets NOT in bin shipped
+Bins: 2366
+Pallets: 5319   (ONE PALLET WAS REMOVED BECAUSE IT HAD descriptoin of table instead of being linked)
+BinInventory: 5319
+Products: 1572
+
+Transactions: 367199
+
+Storage Requests: 3450
+
+Summary of things to look at:
+Verify number of bins, pallets, customers, and employees
+error with row:   488666	PALLET	CABINETS	TABLE (productID was listed as TABLE instead of a number)
+
+There were two cargills
+
+Default password is 4321 for all users
+Passwords transferred for employee list provided
+Created admin account - same password as travis has
+Jennifer and Travis are flagged as "Provider Owners", which allows approval/assignment of tickets
+
+OPEN ISSUES (all in process of being fixed this week)
+  - Client report takes 2 minutes to run
+  - Receivers report has errors
+  - Pagination for Bin and Pallet reports broken
+  - Associations list is too large, scrolls, need to change the layout
+
+  CLEANUP - Feedback sent on customer list on 12-20:  BKG, Dayco, Berry, PG, SSX, Rockline, Factilies, SSX, WORKS
+
+There were 21 companies removed and 931 items
+SELECT id FROM Storageitem WHERE ownerid IN (SELECT id FROM user WHERE id NOT IN (62, 67, 71, 80, 82, 84, 85, 86, 89) AND id <900)
+
+
+companies removed:
+  63
+  ampac
+  64
+  TYSON
+  65
+  SUPPLYONE
+  66
+  LEHMAN
+  68
+  cargill
+  69
+  GRIPSTER
+  70
+  TRP
+  72
+  SCIENCE
+  73
+  BCS
+  74
+  AG
+  75
+  kemin
+  77
+  TBR
+  78
+  RPP
+  79
+  CARGILL
+  81
+  Top Seal
+  83
+  Sams
+  87
+  VanKirk
+  88
+  BPC
+  90
+  TYSON AN
+  91
+  CJS
+  92
+  TROUW

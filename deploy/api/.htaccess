@@ -1,0 +1,22 @@
+# Define the root domain that is allowed
+SetEnvIf Origin "http(s)?://(www\.)?(inventory.warehousedashboard.com|stocker.warehousedashboard.com)$" AccessControlAllowOrigin=$0
+Header add Access-Control-Allow-Origin %{AccessControlAllowOrigin}e env=AccessControlAllowOrigin
+Header merge Vary Origin
+
+# Check that the Origin: matches the defined root domain and capture it in
+# an environment var if it does
+RewriteEngine On
+RewriteCond %{ENV:ACCESS_CONTROL_ROOT} !=""
+RewriteCond %{ENV:ACCESS_CONTROL_ORIGIN} =""
+RewriteCond %{ENV:ACCESS_CONTROL_ROOT}&%{HTTP:Origin} ^([^&]+)&(https?://(?:.+?\.)?\1(?::\d{1,5})?)$
+RewriteRule .* - [E=ACCESS_CONTROL_ORIGIN:%2]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [QSA,L]
+
+SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+
+# Set the response header to the captured value if there was a match
+# Header set Access-Control-Allow-Origin %{ACCESS_CONTROL_ORIGIN}e env=ACCESS_CONTROL_ORIGIN
+# Header always append Access-Control-Allow-Origin *
+Header add Access-Control-Allow-Methods "PUT, GET, POST, DELETE, OPTIONS"

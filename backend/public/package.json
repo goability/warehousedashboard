@@ -1,0 +1,14 @@
+{
+  "name": "publicwarehouse",
+  "version": "0.0.1",
+  "description": "Public warehouse front-end",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matt Chandler, Ability Inc.",
+  "license": "not licensed",
+  "devDependencies": {
+    "sass": "^1.30.0"
+  }
+}

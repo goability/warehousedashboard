@@ -1,0 +1,40 @@
+{
+    "navigationMenuText"        : "Work Items",
+    "navigationMenuURL"         : "/Workitem",
+    "displayName"               : "Work Item",
+    "formTitle"                 : "Work Items",
+    "resourceImageLarge"        : "workitem.jpg",
+    "resourceImageThumb"        : "",
+    "tableName"                 : "workitem",
+    "ownedByResourceName"       : "User",
+    "ownedByFieldName"          : "userid",
+    "indexFieldName"            : "id",
+    "displayFieldName"          : ["id"],
+    "orderByFieldName"          : "date_started",
+    "orderByDirection"          : "DESC",
+    "fields" : {
+                  "userid"
+                                : { "dataType"            : "int",
+                                    "formlabel"           : "Requestor",
+                                    "formcomponent"       : "select",
+                                    "linkedFieldKey"      : "User.ID"
+                                  },
+                  "shipmentid"   : { "dataType"           : "int",
+                                    "formlabel"           : "Item",
+                                    "formcomponent"       : "select",
+                                    "linkedFieldKey"      : "Shipment.ID"
+                                  },
+                  "storageid"   : { "dataType"            : "int",
+                                    "formlabel"           : "Item",
+                                    "formcomponent"       : "select",
+                                    "linkedFieldKey"      : "Storage.ID"
+                                  },
+                  "date_started": { "dataType"            : "string",
+                                    "formlabel"           : "Date needed",
+                                    "formcomponent"       : "date"},
+                  "date_completed": { "dataType"          : "string",
+                                    "formlabel"           : "Date needed",
+                                    "formcomponent"       : "date"}
+
+              }
+  }

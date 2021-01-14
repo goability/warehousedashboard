@@ -1,0 +1,96 @@
+{
+    "navigationMenuText"        : "Storage",
+    "navigationMenuURL"         : "/Storage",
+    "displayName"               : "Storage Request",
+    "formTitle"                 : "Storage Requests",
+    "resourceImageLarge"        : "storage.jpg",
+    "resourceImageThumb"        : "",
+    "tableName"                 : "storage",
+    "ownedByFieldName"          : "userid_requestor",
+    "ownedByResourceName"       : "User",
+    "indexFieldName"            : "id",
+    "displayFieldName"          : ["name"],
+    "orderByFieldName"          : "name",
+    "orderByDirection"          : "DESC",
+    "fields" : {
+                  "name"      : {   "dataType"            : "string",
+                                    "formlabel"           : "Storage Label",
+                                    "formcomponent"       : "text",
+                                    "maxlength": "40",
+                                    "componentsize" : "20",
+                                    "regex" : "/[^a-z_\\-0-9]/i"
+                                  },
+                  "userid_requestor"
+                                : { "dataType"            : "int",
+                                    "formlabel"           : "Requestor",
+                                    "formcomponent"       : "select",
+                                    "linkedFieldKey"      : "User.ID"
+                                  },
+                  "userid_approver"
+                                : { "dataType"            : "int",
+                                    "formlabel"           : "Approver",
+                                    "formcomponent"       : "select",
+                                    "linkedFieldKey"      : "User.ID"
+                                  },
+                  "userid_stocker"
+                                : { "dataType"            : "int",
+                                    "formlabel"           : "Stocker",
+                                    "formcomponent"       : "select",
+                                    "linkedFieldKey"      : "User.ID"
+                                  },
+                  "itemid"      : { "dataType" : "int",
+                                    "formlabel": "Item",
+                                    "formcomponent": "select",
+                                    "linkedFieldKey"      : "Storageitem.ID"
+                                  },
+                  "qty"         : { "dataType" : "int",
+                                    "formlabel": "Quantity",
+                                    "formcomponent": "text",
+                                    "maxlength": "6",
+                                    "componentsize" : "6",
+                                    "regex" : "/[^0-9]/i"
+                                  },
+                  "lotnumber"   : { "dataType" : "string",
+                                    "formlabel": "Lot",
+                                    "formcomponent": "text",
+                                    "maxlength": "20",
+                                    "componentsize" : "10",
+                                    "regex" : "/[^a-z_\\-0-9]/i"
+                                  },
+                  "tag"        : { "dataType" : "string",
+                                    "formlabel": "Tag",
+                                    "formcomponent": "text",
+                                    "maxlength": "20",
+                                    "componentsize" : "20",
+                                    "regex" : "/[^a-z_\\-0-9]/i"
+                                  },
+                  "date_needed": { "dataType" : "string",
+                                    "formlabel": "Date needed",
+                                    "formcomponent": "date",
+                                    "maxlength": "40",
+                                    "componentsize" : "20",
+                                    "regex" : "/[^a-z_\\-0-9]/i"
+                                  },
+                  "date_approved": { "dataType" : "string",
+                                      "formlabel": "Date approved",
+                                      "formcomponent": "date",
+                                      "maxlength": "40",
+                                      "componentsize" : "20",
+                                      "regex" : "/[^a-z_\\-0-9]/i"
+                                  },
+                  "date_stored": { "dataType" : "string",
+                                      "formlabel": "Date stored",
+                                      "formcomponent": "date",
+                                      "maxlength": "40",
+                                      "componentsize" : "20",
+                                      "regex" : "/[^a-z_\\-0-9]/i"
+                                  },
+                  "notes"      : { "dataType" : "string",
+                                  "formlabel": "Special Instructions",
+                                  "formcomponent": "textarea",
+                                  "maxlength": "200",
+                                  "rows":"5",
+                                  "cols":"20"
+                                }
+              }
+  }

@@ -1,0 +1,198 @@
+/*
+Styles for Publicwarehouse
+Generate css by running:  lessc inputfile outputfile
+
+Common Style classes:
+
+ - MenuTop
+ - Footer
+ - Resource Header
+ - Resource Form
+
+
+*/
+
+//------- CLASSES -----------------
+
+//--------------------
+//BODY and MAIN APP COLORS
+//--------------------
+$body_color_background: #F7EEC3;
+$default_text_color: #000000;
+
+body {
+  background: $body_color_background;
+}
+
+//--------------------
+//MenuTop
+//--------------------
+
+$menu_top_background: #9F881A;
+$menu_top_color: #000000;
+$menu_link_color: #DDE0E0;
+
+.menuTop {
+  background: $menu_top_background;
+  color: $menu_top_color;
+  border-radius: 10px;
+  padding: 5px;
+  a { color: $menu_link_color; font-size: small; font-style: normal; font-weight: lighter;}
+}
+//--------------------
+//Footer
+//--------------------
+$footer_background: $body_color_background;
+$footer_color: #827436;
+
+.footer{
+  background: $footer_background;
+  color: $footer_color;
+  font-size: small;
+}
+//--------------------
+//Resource Form
+//--------------------
+$resourceForm_background: #DDD2A0;
+$resourceForm_color: $default_text_color;
+$resourceForm_size: medium;
+
+$resourceFormNav_background: #806B0A;
+//------------------------------------------------------
+
+//------- Main page template
+
+.content-container{
+
+  margin:2px;
+}
+
+//------ FORM RELATED
+.tab-pane-resource{
+  margin: 2px;
+}
+.resourceForm{
+  background: $resourceForm_background;
+  color: $resourceForm_color;
+  font-size: medium;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 2px;
+}
+.resource-form-header{
+  background: $resourceFormNav_background;
+  color: $resourceForm_color;
+  font-size: medium;
+  border-radius: 15px;
+}
+// record field labels, firstname, lastname, etc
+.form-label {
+  color: $default_text_color;
+}
+
+.resource-item img{
+  height: 200px;
+  width: 200px;
+}
+.ship-store-detail-strip{
+  display: inline-block;
+  max-width: 50%;
+  background: Silver;
+}
+.shipstoreButtonStrip{
+  display: block;
+  background: Silver;
+  margin-left:2px;
+}
+
+.product-stock-info-strip{
+  background-color: Silver;
+  margin: 1px;
+}
+
+.summary-card-data-strong{
+  font-weight: bold;
+}
+
+
+
+
+// SELECT, ..
+.form-control-label {
+  color: $default_text_color;
+  font-weight: bolder;
+}
+
+//------ HEADERS and NAVIGATION
+.resourceHeader{
+  font-size:x-large;
+}
+//The 'ADMIN' tag added to UI when user is an administrator
+.adminTag{
+  font-size:x-small;
+  font-weight:bold;
+  text-decoration-color: Yellow;
+  background-color: $menu_top_background;
+  display:inline;
+}
+
+//------ NAVIGATION and BUTTONS
+
+.resourceNav{
+  font-weight: bold;
+  background: $resourceFormNav_background;
+}
+
+.resourceNavButtons{
+  font-size: x-small;
+}
+
+.nav-record-item-disassociate{
+  background-color: Yellow;
+  padding-right: 3px;
+}
+
+.nav-resource-tab-link a{
+  text-decoration: none;
+}
+
+.div.fixedPopup{
+  position: fixed;
+  bottom: 50%;
+  right: 0;
+  width: 300px;
+  border: 3px solid $resourceForm_color;
+}
+
+// - report nav
+
+.nav-report-active {
+  background:$resourceFormNav_background;
+
+  text-decoration: none;
+  border-radius: 10px;
+}
+
+//------ Debugging
+
+.debugFormats{
+  font-size: x-small;
+  color:black;
+}
+
+.formElementBad{
+  border-color: Red;
+}
+
+.resourceCardImage{
+  max-width:50%
+}
+
+//--- general
+
+.hidden {
+  display:none;
+}
+.visible-inline {
+  display: inline;
+}

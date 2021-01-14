@@ -1,0 +1,90 @@
+{
+    "navigationMenuText"        : "My Items",
+    "navigationMenuURL"         : "/Storageitem",
+    "displayName"               : "Storage Item",
+    "formTitle"                 : "My Items",
+    "resourceImageLarge"        : "boxesstacked.jpg",
+    "resourceImageThumb"        : "",
+    "tableName"                 : "storageitem",
+    "ownedByResourceName"       : "User",
+    "ownedByFieldName"          : "ownerid",
+    "indexFieldName"            : "id",
+    "displayFieldName"          : ["name"],
+    "orderByFieldName"          : "name",
+    "orderByDirection"          : "DESC",
+    "fields" : {
+                  "ownerid"     : { "dataType"            : "int",
+                                    "formlabel"           : "Owner",
+                                    "formcomponent"       : "select",
+                                    "linkedFieldKey"      : "User.ID"
+                                  },
+                  "name"        : { "dataType" : "string",
+                                    "formlabel": "Item Name",
+                                    "formcomponent": "text",
+                                    "maxlength": "20",
+                                    "componentsize" : "20",
+                                    "regex" : "/[^a-z_\\-0-9]/i"
+                                  },
+                  "sizexinches" : { "dataType" : "int",
+                                    "formlabel": "Size X inches",
+                                    "formcomponent": "text",
+                                    "maxlength": "6",
+                                    "componentsize" : "6",
+                                    "regex" : "/[^0-9]/i"
+                                  },
+                  "sizeyinches" : { "dataType" : "int",
+                                    "formlabel": "Size Y inches",
+                                    "formcomponent": "text",
+                                    "maxlength": "6",
+                                    "componentsize" : "6",
+                                    "regex" : "/[^0-9]/i"
+                                  },
+                  "sizezinches" : {"dataType" : "int",
+                                    "formlabel": "Size Z inches",
+                                    "formcomponent": "text",
+                                    "maxlength": "6",
+                                    "componentsize" : "6",
+                                    "regex" : "/[^0-9]/i"
+                                  },
+                  "weightpounds": { "dataType" : "int",
+                                    "formlabel": "Weight (pounds)",
+                                    "formcomponent": "text",
+                                    "maxlength": "6",
+                                    "componentsize" : "6",
+                                    "regex" : "/[^0-9]/i"
+                                  },
+                  "uom"         : { "dataType" : "string",
+                                    "formlabel": "UoM",
+                                    "formcomponent": "text",
+                                    "maxlength": "6",
+                                    "componentsize" : "6",
+                                    "regex" : "/[^a-z_\\-0-9]/i"
+                                  },
+                  "description" : { "dataType" : "string",
+                                    "formlabel": "Description",
+                                    "formcomponent": "textarea",
+                                    "maxlength": "200",
+                                    "rows":"5",
+                                    "cols":"20"
+                                  }
+              },
+              "dependentCollections"  : {
+                            "Shipment"  : {
+                                          "dataType" : "int",
+                                          "formlabel": "Shipments",
+                                          "formcomponent": "list",
+                                          "LinkedResourceName" : "Shipment",
+                                          "LinkedFieldName": "itemid",
+                                          "ListSize":10
+                                        },
+                            "Storage"  : {
+                                          "dataType" : "int",
+                                          "formlabel": "Storage",
+                                          "formcomponent": "list",
+                                          "LinkedResourceName" : "Storage",
+                                          "LinkedFieldName": "itemid",
+                                          "ListSize":10
+                                        }
+                                      }
+
+  }

@@ -1,0 +1,161 @@
+/*
+Styles for Publicwarehouse
+Generate css by running:  lessc inputfile outputfile
+
+Common Style classes:
+
+ - MenuTop
+ - Footer
+ - Resource Header
+ - Resource Form
+
+
+*/
+body {
+  background: #F7EEC3;
+}
+
+.menuTop {
+  background: #9F881A;
+  color: #000000;
+  border-radius: 10px;
+  padding: 5px;
+}
+.menuTop a {
+  color: #DDE0E0;
+  font-size: small;
+  font-style: normal;
+  font-weight: lighter;
+}
+
+.footer {
+  background: #F7EEC3;
+  color: #827436;
+  font-size: small;
+}
+
+.content-container {
+  margin: 2px;
+}
+
+.tab-pane-resource {
+  margin: 2px;
+}
+
+.resourceForm {
+  background: #DDD2A0;
+  color: #000000;
+  font-size: medium;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 2px;
+}
+
+.resource-form-header {
+  background: #806B0A;
+  color: #000000;
+  font-size: medium;
+  border-radius: 15px;
+}
+
+.form-label {
+  color: #000000;
+}
+
+.resource-item img {
+  height: 200px;
+  width: 200px;
+}
+
+.ship-store-detail-strip {
+  display: inline-block;
+  max-width: 50%;
+  background: Silver;
+}
+
+.shipstoreButtonStrip {
+  display: block;
+  background: Silver;
+  margin-left: 2px;
+}
+
+.product-stock-info-strip {
+  background-color: Silver;
+  margin: 1px;
+}
+
+.summary-card-data-strong {
+  font-weight: bold;
+}
+
+.form-control-label {
+  color: #000000;
+  font-weight: bolder;
+}
+
+.resourceHeader {
+  font-size: x-large;
+}
+
+.adminTag {
+  font-size: x-small;
+  font-weight: bold;
+  text-decoration-color: Yellow;
+  background-color: #9F881A;
+  display: inline;
+}
+
+.resourceNav {
+  font-weight: bold;
+  background: #806B0A;
+}
+
+.resourceNavButtons {
+  font-size: x-small;
+}
+
+.nav-record-item-disassociate {
+  background-color: Yellow;
+  padding-right: 3px;
+}
+
+.nav-resource-tab-link a {
+  text-decoration: none;
+}
+
+.div.fixedPopup {
+  position: fixed;
+  bottom: 50%;
+  right: 0;
+  width: 300px;
+  border: 3px solid #000000;
+}
+
+.nav-report-active {
+  background: #806B0A;
+  text-decoration: none;
+  border-radius: 10px;
+}
+
+.debugFormats {
+  font-size: x-small;
+  color: black;
+}
+
+.formElementBad {
+  border-color: Red;
+}
+
+.resourceCardImage {
+  max-width: 50%;
+}
+
+.hidden {
+  display: none;
+}
+
+.visible-inline {
+  display: inline;
+}
+
+/*# sourceMappingURL=common.css.map */

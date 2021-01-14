@@ -1,0 +1,49 @@
+{
+      "navigationMenuText"        : "Pallets",
+      "navigationMenuURL"         : "/Storagepallet",
+      "displayName"               : "Pallet",
+      "formTitle"                 : "Pallets",
+      "resourceImageLarge"        : "pallets.jpg",
+      "resourceImageThumb"        : "",
+      "tableName"                 : "storagepallet",
+      "ownedByResourceName"       : "Provider",
+      "ownedByFieldName"          : "providerid",
+      "indexFieldName"            : "id",
+      "displayFieldName"          : ["name"],
+      "orderByFieldName"          : "name",
+      "orderByDirection"          : "DESC",
+      "fields" : {
+                    "facilityid"  : {"dataType" : "int", "formlabel": "Facility", "formcomponent": "select",  "linkedFieldKey": "Storagefacility.ID"},
+                    "providerid"  : {"dataType" : "int", "formlabel": "Provider", "formcomponent": "select",  "linkedFieldKey": "Provider.ID"},
+                    "name"        : {"dataType" : "string", "formlabel": "Pallet ID", "formcomponent": "text", "maxlength": "20", "componentsize" : "20", "regex" : "/[^a-z_\\-0-9]/i"},
+                    "tag"         : {"dataType" : "string", "formlabel": "Tag", "formcomponent": "text", "maxlength": "16", "componentsize" : "16", "regex" : "/[^a-z_\\-0-9]/i"},
+                    "sizexinches" : {"dataType" : "string", "formlabel": "X inches", "formcomponent": "text", "maxlength": "6", "componentsize" : "6", "regex" : "/[^0-9]/i"},
+                    "sizeyinches" : {"dataType" : "string", "formlabel": "Y inches", "formcomponent": "text", "maxlength": "6", "componentsize" : "6", "regex" : "/[^0-9]/i"},
+                    "sizezinches" : {"dataType" : "string", "formlabel": "Z inches", "formcomponent": "text", "maxlength": "6", "componentsize" : "6", "regex" : "/[^0-9]/i"},
+                    "description" : {"dataType" : "string", "formlabel": "Notes", "formcomponent": "textarea", "maxlength": "200", "rows":"5", "cols":"20"},
+                    "full"        : {"dataType" : "int", "formlabel": "Full", "formcomponent": "checkbox", "defaultvalue": false},
+                    "empty"       : {"dataType" : "int", "formlabel": "Empty", "formcomponent": "checkbox", "defaultvalue": false},
+                    "usable"      : {"dataType" : "int", "formlabel": "Usable", "formcomponent": "checkbox", "defaultvalue": true},
+                    "repeatedbatch" : {"dataType" : "int", "formlabel": "Batched", "formcomponent": "checkbox", "defaultvalue": false}
+                },
+      "associativeCollections" :
+                {
+                  "palletinventory" :
+                  {
+                    "dataType" : "int",
+                    "formlabel": "Inventory",
+                    "formcomponent": "list",
+                    "associativeKeyField": "storagepalletinventory.palletid",
+                    "associationObjects" :
+                    {
+                        "Storage" :
+                        { "LinkedFieldName" : "storagepalletinventory.storageid",
+                          "ListSize":4,
+                          "addButtonText": "add storage",
+                          "displayText" : "Storage",
+                          "additionalFields": "item_qty, lotnumber, tag, itemid"
+                        }
+                    }
+                  }
+              }
+    }

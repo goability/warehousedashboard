@@ -1,0 +1,116 @@
+{
+    "navigationMenuText"        : "Profile",
+    "navigationMenuURL"         : "/User",
+    "displayName"               : "User",
+    "formTitle"                 : "My Profile",
+    "resourceImageLarge"        : "users.jpg",
+    "resourceImageThumb"        : "",
+    "tableName"                 : "user",
+    "indexFieldName"            : "id",
+    "ownedByResourceName"       : "User",
+    "ownedByFieldName"          : "id",
+    "displayFieldName"          : ["firstname", "lastname"],
+    "orderByFieldName"          : "name",
+    "orderByDirection"          : "DESC",
+    "fields" : {
+                  "companyname" : {"dataType" : "string", "formlabel": "Company Name", "formcomponent": "text", "maxlength": "60", "componentsize" : "20", "regex" : "/[^a-z_\\-0-9]/i"},
+                  "firstname" :   {"dataType" : "string","formlabel": "First Name", "formcomponent": "text", "maxlength": "40", "componentsize" : "20", "regex" : "/[^a-z_\\-0-9]/i"},
+                  "middlename" :  {"dataType" : "string","formlabel": "Middle", "formcomponent": "text", "maxlength": "40", "componentsize" : "20", "regex" : "/[^a-z_\\-0-9]/i"},
+                  "lastname" :    {"dataType" : "string","formlabel": "Last", "formcomponent": "text", "maxlength": "40", "componentsize" : "20", "regex" : "/[^a-z_\\-0-9]/i"},
+                  "address" :     {"dataType" : "string","formlabel": "Address", "formcomponent": "text", "maxlength": "100", "componentsize" : "20", "regex" : "/[^a-z_\\-0-9]/i"},
+                  "city" :        {"dataType" : "string","formlabel": "City", "formcomponent": "text", "maxlength": "100", "componentsize" : "20", "regex" : "/[^a-z_\\-0-9]/i"},
+                  "state" :       {"dataType" : "string","formlabel": "State", "formcomponent": "text", "maxlength": "2", "componentsize" : "2", "regex" : "/[^a-z_\\-0-9]/i"},
+                  "zip" :         {"dataType" : "string","formlabel": "Zip", "formcomponent": "text", "maxlength": "12", "componentsize" : "12", "regex" : "/[^a-z_\\-0-9]/i"},
+                  "phonemobile" : {"dataType" : "string","formlabel": "Mobile", "formcomponent": "text", "maxlength": "20", "componentsize" : "20", "regex" : "/[^a-z_\\-0-9]/i"},
+                  "phonehome" :   {"dataType" : "string","formlabel": "Phone Home", "formcomponent": "text", "maxlength": "20", "componentsize" : "20", "regex" : "/[^a-z_\\-0-9]/i"},
+                  "phoneother" :  {"dataType" : "string","formlabel": "Phone Alt", "formcomponent": "text", "maxlength": "20", "componentsize" : "20", "regex" : "/[^a-z_\\-0-9]/i"},
+                  "emailaddress" : {"dataType" : "string","formlabel": "EmailAddress", "formcomponent": "text", "maxlength": "100", "componentsize" : "20", "regex" : "/[^a-z_\\-0-9]/i"},
+                  "website" :     {"dataType" : "string","formlabel": "Website", "formcomponent": "text", "maxlength": "100", "componentsize" : "20", "regex" : "/[^a-z_\\-0-9]/i"},
+                  "facebookurl" : {"dataType" : "string","formlabel": "Facebook", "formcomponent": "text", "maxlength": "100", "componentsize" : "20", "regex" : "/[^a-z_\\-0-9]/i"},
+                  "linkedinurl" : {"dataType" : "string","formlabel": "LinkedIn", "formcomponent": "text", "maxlength": "100", "componentsize" : "20", "regex" : "/[^a-z_\\-0-9]/i"},
+                  "profilename" : {"dataType" : "string","formlabel": "Profile Name", "formcomponent": "text", "maxlength": "16", "componentsize" : "16", "regex" : "/[^a-z_\\-0-9]/i"},
+                  "profileimagepath" : {"dataType" : "string","formlabel": "Profile Image", "formcomponent": "text", "maxlength": "100", "componentsize" : "20", "regex" : "/[^a-z_\\-0-9]/i"},
+                  "notes" : {"dataType" : "string", "formlabel": "Notes", "formcomponent": "textarea", "maxlength": "200", "rows":"5", "cols":"20" },
+                  "displaycode" : {"dataType" : "string","formlabel": "Short Code", "formcomponent": "text", "maxlength": "10", "componentsize" : "10", "regex" : "/[^a-z_\\-0-9]/i"},
+                  "upasswd" : {"read-only":true, "dataType" : "string","formlabel": "PasswordHash", "formcomponent": "label", "maxlength": "80", "componentsize" : "60", "regex" : "/[^a-z_\\-0-9]/i"}
+
+
+              },
+    "dependentCollections" :
+              {
+                  "StorageItems"      : {
+                                          "dataType" : "int",
+                                          "formlabel": "Storage Items",
+                                          "formcomponent": "list",
+                                          "LinkedResourceName" : "Storageitem",
+                                          "LinkedFieldName": "ownerid",
+                                          "ListSize":4
+                                        },
+                  "Providers"         : {
+                                          "dataType" : "int",
+                                          "formlabel": "Providers",
+                                          "formcomponent": "list",
+                                          "LinkedResourceName" : "Provider",
+                                          "LinkedFieldName": "ownerid",
+                                          "ListSize":4,
+                                          "addButtonText" : "request"
+                                        },
+                  "Storagefacilities" : {
+                                          "dataType" : "int",
+                                          "formlabel": "Facilities",
+                                          "formcomponent": "list",
+                                          "LinkedResourceName" : "Storagefacility",
+                                          "LinkedFieldName": "ownerid",
+                                          "ListSize":4
+                                        }
+              },
+              "associativeCollections" :
+                        {
+                          "receivers" :
+                          {
+                            "dataType" : "int",
+                            "formlabel": "Recipients",
+                            "formcomponent": "list",
+                            "associativeKeyField": "receiver.clientid",
+                            "associationObjects" :
+                            {
+                                "User" :
+                                {
+                                  "canAdd" : false,
+                                  "LinkedFieldName" : "receiver.receiverid",
+                                  "ListSize":4,
+                                  "addButtonText": "do not show",
+                                  "displayText" : "Recipients"
+                                }
+                            }
+                          }
+                        },
+    "reporting" :
+              {
+                "Resource" :
+                {
+                  "Companies" :
+                  {
+                    "row-header"  : "companyname",
+                    "row-detail"  :
+                    [
+                      { "col-head" : "First Name", "col-data" : "firstname" },
+                      { "col-head" : "Last Name", "canSort" : true, "col-data" : "lastname" },
+                      { "col-head" : "Email Address", "col-data" : "emailaddress" },
+                      { "col-head" : "Mobile", "col-data" : "phonemobile" }
+                    ]
+                  },
+                  "Owners" :
+                  {
+                    "row-header"  : "firstname,lastname",
+                    "row-detail"     :
+                    [
+                      { "col-head" : "First Name", "col-data" : "firstname" },
+                      { "col-head" : "Last Name", "canSort" : true, "col-data" : "lastname" },
+                      { "col-head" : "Email Address", "col-data" : "emailaddress" },
+                      { "col-head" : "Mobile", "col-data" : "phonemobile" }
+                    ]
+                  }
+                }
+              }
+  }

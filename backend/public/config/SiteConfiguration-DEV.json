@@ -1,0 +1,414 @@
+
+{
+  "ProductName": "warehousedashboard",
+  "DebugMode": false,
+  "ResourceDir": "resources",
+  "SiteURL": "http://warehousedashboard:8888",
+  "APIURL": "http://warehousedashboard:8888/api",
+  "EmailFromDomain" : "warehousedashboard.com",
+  "EmailFromUser" : "inventory",
+  "DefaultPassword" : "1234",
+  "dashboardLinkText" : "WDB",
+  "ClientRecentSHIPFilter" : "21 day",
+  "ClientRecentSTOREFilter" : "21 day",
+  "ClientItemHistoryFilter" : "1 year",
+  "ProviderHistoryFilter" : "1 month",
+  "EmployeeHistoryFilter" : "90 day",
+  "StockerDeployInSubdir" : true,
+  "APIDeployInSubdir"     : true,
+  "Sessioning":{
+    "SessionNameSite"             : "warehouse",
+    "SessionNameHandHeld"         : "warehouseHandheld",
+    "SessionTimeoutSecs"          : 3600,
+    "PasswordRecoveryTimeoutSecs" : 180,
+    "HandheldSessionTimeout"      : 3600
+  },
+  "Database" : {
+    "type" : "mysql",
+    "mysql" : {
+      "databasename"  : "warehouse",
+      "host": "127.0.0.1",
+      "port" : "3308",
+      "username" : "warehouse_admin",
+      "password" : "Xn35k862FohE1Zep",
+      "queryLimits" : 1000,
+      "defaultPerPage" : 500,
+      "minPerPage" : 100,
+      "maxPerPage" : 500
+    },
+    "postgres" : {
+      "databasename"  : "warehouse",
+      "host": "127.0.0.1",
+      "port" : "5432",
+      "username" : "warehouse_admin",
+      "password" : "password1",
+      "queryLimits" : 1000,
+      "defaultPerPage" : 50,
+      "minPerPage" : 50,
+      "maxPerPage" : 500
+    }
+  },
+  "ScanningModes" : {
+    "enforcePalletScanOnStore" : false,
+    "enforceBinScanOnStore" : false,
+    "enforcePalletScanOnShip"   : false,
+    "enforceBinScanOnShip"      : false
+  },
+  "HideTopMenuResources" : "Login, Signup",
+  "Logging": {
+    "LogLevel"    : "DEBUG",
+    "LogBasePath" : "/var/log/pwh",
+    "LogFilePrefix" : "pwh",
+    "LogFileExtension" : ".log",
+    "LogFilesToRetainInfo"    : 5,
+    "LogFilesToRetainWarn"    : 5,
+    "LogFilesToRetainError"   : 5,
+    "LogFilesToRetainDebug"   : 5
+  },
+  "reportConfig":{
+    "includeLoginLogout" : false
+  },
+  "reports":{
+    "PalletInventory" :
+    {
+      "reportid"    : 1,
+      "title"       : "Pallet Inventory",
+      "isGrouped"   : false,
+      "row_detail"  :
+      [
+        { "col_head" : "Pallet", "canSort" : true, "col_data" : "palletname", "index" : 1 },
+        { "col_head" : "Bin", "canSort" : true, "col_data" : "binname", "index" : 2 },
+        { "col_head" : "Product", "canSort" : true, "col_data" : "itemname", "index" : 3 },
+        { "col_head" : "Lot", "canSort" : true, "col_data" : "lotnumber", "index" : 4 },
+        { "col_head" : "Current", "canSort" : true, "col_data" : "item_qty", "index" : 5 },
+        { "col_head" : "Requested", "canSort" : true, "col_data" : "request_qty", "index" : 6 },
+        { "col_head" : "Client", "canSort" : true, "col_data" : "clientname", "index" : 7 }
+      ]
+    },
+    "PalletInventoryPending" :
+    {
+      "reportid"    : 7,
+      "title"       : "Pending Pallet Inventory",
+      "isGrouped"   : false,
+      "row_detail"  :
+      [
+        { "col_head" : "Pallet", "canSort" : true, "col_data" : "palletname", "index" : 1 },
+        { "col_head" : "Bin", "canSort" : true, "col_data" : "binname", "index" : 2 },
+        { "col_head" : "Product", "canSort" : true, "col_data" : "itemname", "index" : 3 },
+        { "col_head" : "Lot", "canSort" : true, "col_data" : "lotnumber", "index" : 4 },
+        { "col_head" : "Current", "canSort" : true, "col_data" : "item_qty", "index" : 5 },
+        { "col_head" : "Requested", "canSort" : true, "col_data" : "request_qty", "index" : 6 },
+        { "col_head" : "Client", "canSort" : true, "col_data" : "clientname", "index" : 7 }
+      ]
+    },
+    "BinInventory" :
+    {
+      "reportid"    : 2,
+      "title"       : "Bin Inventory",
+      "isGrouped"   : false,
+      "row_detail"  :
+      [
+        { "col_head" : "Bin", "canSort" : true, "col_data" : "binname", "index" : 1 },
+        { "col_head" : "Pallet", "canSort" : true, "col_data" : "palletname", "index" : 2 }
+      ]
+    },
+    "ClientInventory" :
+    {
+      "reportid"    : 4,
+      "title"       : "Client Inventory",
+      "isGrouped"   : true,
+      "groupByFieldName" : "companyname",
+      "row_detail"  :
+      [
+        { "col_head" : "Client", "canSort" : true, "col_data" : "companyname", "index" : 1 },
+        { "col_head" : "Product", "canSort" : true, "col_data" : "name", "index" : 2 },
+        { "col_head" : "Qty", "canSort" : true, "col_data" : "qty", "index" : 3 }
+      ]
+    },
+    "ProductInventory" :
+    {
+      "reportid"    : 3,
+      "title"       : "Product Inventory",
+      "isGrouped"   : false,
+      "row_detail"  :
+      [
+        { "col_head" : "Product", "canSort" : true, "col_data" : "name", "index" : 1 },
+        { "col_head" : "Qty", "canSort" : true, "col_data" : "qty", "index" : 2 }
+      ]
+    },
+    "LotInventory" :
+    {
+      "reportid"    : 5,
+      "title"       : "Lot Inventory",
+      "isGrouped"   : true,
+      "groupByFieldName" : "name",
+      "row_detail"  :
+      [
+        { "col_head" : "Product", "canSort" : true, "col_data" : "name", "index" : 1 },
+        { "col_head" : "Lot", "canSort" : true, "col_data" : "lotnumber", "index" : 2 },
+        { "col_head" : "Qty", "canSort" : true, "col_data" : "qty", "index" : 3 }
+      ]
+    },
+    "Receivers" :
+    {
+      "reportid"    : 54,
+      "title"       : "Receivers",
+      "isGrouped"   : false,
+      "row_detail"  :
+      [
+        { "col_head" : "Name", "canSort" : true, "col_data" : "name", "index" : 1 },
+        { "col_head" : "City", "canSort" : true, "col_data" : "city", "index" : 2 },
+        { "col_head" : "State", "canSort" : true, "col_data" : "state", "index" : 3 },
+        { "col_head" : "Email", "canSort" : true, "col_data" : "emailaddress", "index" : 4 , "type" : "email" },
+        { "col_head" : "Phone", "canSort" : true, "col_data" : "phonemobile", "index" : 5, "type" : "phone" }
+      ]
+    },
+    "Clients" :
+    {
+      "reportid"    : 51,
+      "title"       : "Clients",
+      "isGrouped"   : false,
+      "row_detail"  :
+      [
+        { "col_head" : "Name", "canSort" : true, "col_data" : "name", "index" : 1 },
+        { "col_head" : "Location", "canSort" : true, "col_data" : "location", "index" : 2 },
+        { "col_head" : "Email", "canSort" : true, "col_data" : "emailaddress", "index" : 4 , "type" : "email" },
+        { "col_head" : "Phone", "canSort" : true, "col_data" : "phonemobile", "index" : 5, "type" : "phone" }
+      ]
+    },
+    "Employees" :
+    {
+      "reportid"    : 53,
+      "title"       : "Employees",
+      "isGrouped"   : false,
+      "row_detail"  :
+      [
+        { "col_head" : "Name", "canSort" : true, "col_data" : "name", "index" : 1 },
+        { "col_head" : "City", "canSort" : true, "col_data" : "city", "index" : 2 },
+        { "col_head" : "State", "canSort" : true, "col_data" : "state", "index" : 3 },
+        { "col_head" : "Email", "canSort" : true, "col_data" : "emailaddress", "index" : 4 , "type" : "email" },
+        { "col_head" : "Phone", "canSort" : true, "col_data" : "phonemobile", "index" : 5, "type" : "phone" }
+      ]
+    },
+    "TransactionsUsers" :
+    {
+      "reportid"    : 21,
+      "title"       : "User Transactions",
+      "isGrouped"   : true,
+      "groupByFieldName" : "transusername",
+      "row_detail"  :
+      [
+        { "col_head" : "Type", "canSort" : true, "col_data" : "type", "index" : 1 },
+        { "col_head" : "Item", "canSort" : true, "col_data" : "storageitemname", "index" : 2 },
+        { "col_head" : "Receiver", "canSort" : true, "col_data" : "receivername", "index" : 3 },
+        { "col_head" : "User", "canSort" : true, "col_data" : "transusername", "index" : 4 },
+        { "col_head" : "Notes", "canSort" : true, "col_data" : "notes", "index" : 5 },
+        { "col_head" : "Date", "canSort" : true, "col_data" : "time_stamp", "index" : 6 }
+      ]
+    },
+    "TransactionsClients" :
+    {
+      "reportid"    : 22,
+      "title"       : "Client Related Transactions",
+      "isGrouped"   : true,
+      "groupByFieldName" : "clientname",
+      "row_detail"  :
+      [
+        { "col_head" : "Type", "canSort" : true, "col_data" : "type", "index" : 1 },
+        { "col_head" : "Item", "canSort" : true, "col_data" : "storageitemname", "index" : 2 },
+        { "col_head" : "Receiver", "canSort" : true, "col_data" : "receivername", "index" : 3 },
+        { "col_head" : "User", "canSort" : true, "col_data" : "transusername", "index" : 4 },
+        { "col_head" : "Notes", "canSort" : true, "col_data" : "notes", "index" : 5 },
+        { "col_head" : "Date", "canSort" : true, "col_data" : "time_stamp", "index" : 6 }
+      ]
+    },
+    "TransactionsReceivers" :
+    {
+      "reportid"    : 23,
+      "title"       : "Receiver Related Transactions",
+      "isGrouped"   : true,
+      "groupByFieldName" : "receivername",
+      "row_detail"  :
+      [
+        { "col_head" : "Type", "canSort" : true, "col_data" : "type", "index" : 1 },
+        { "col_head" : "Item", "canSort" : true, "col_data" : "storageitemname", "index" : 2 },
+        { "col_head" : "Receiver", "canSort" : true, "col_data" : "receivername", "index" : 3 },
+        { "col_head" : "User", "canSort" : true, "col_data" : "transusername", "index" : 4 },
+        { "col_head" : "Notes", "canSort" : true, "col_data" : "notes", "index" : 5 },
+        { "col_head" : "Date", "canSort" : true, "col_data" : "time_stamp", "index" : 6 }
+      ]
+    },
+    "TransactionsProviders" :
+    {
+      "reportid"    : 24,
+      "title"       : "Provider Related Transactions",
+      "isGrouped"   : true,
+      "groupByFieldName" : "clientname",
+      "row_detail"  :
+      [
+        { "col_head" : "Type", "canSort" : true, "col_data" : "type", "index" : 1 },
+        { "col_head" : "Client", "canSort" : true, "col_data" : "clientname", "index" : 2 },
+        { "col_head" : "Item", "canSort" : true, "col_data" : "storageitemname", "index" : 3 },
+        { "col_head" : "Receiver", "canSort" : true, "col_data" : "receivername", "index" : 4 },
+        { "col_head" : "User", "canSort" : true, "col_data" : "transusername", "index" : 5 },
+        { "col_head" : "Date", "canSort" : true, "col_data" : "time_stamp", "index" : 6 }
+      ]
+    },
+    "TransactionsEmployees" :
+    {
+      "reportid"    : 25,
+      "title"       : "Employee Related Transactions",
+      "isGrouped"   : true,
+      "groupByFieldName" : "transusername",
+      "row_detail"  :
+      [
+        { "col_head" : "Type", "canSort" : true, "col_data" : "type", "index" : 1 },
+        { "col_head" : "Employee", "canSort" : true, "col_data" : "transusername", "index" : 2 },
+        { "col_head" : "Client", "canSort" : true, "col_data" : "clientname", "index" : 3 },
+        { "col_head" : "Item", "canSort" : true, "col_data" : "storageitemname", "index" : 4 },
+        { "col_head" : "Detail", "canSort" : true, "col_data" : "notes", "index" : 5 },
+        { "col_head" : "Date", "canSort" : true, "col_data" : "time_stamp", "index" : 6 }
+      ]
+    },
+    "TransactionsPallets" :
+    {
+      "reportid"    : 26,
+      "title"       : "Pallet Transactions",
+      "isGrouped"   : true,
+      "groupByFieldName" : "palletname",
+      "row_detail"  :
+      [
+        { "col_head" : "Type", "canSort" : true, "col_data" : "type", "index" : 1 },
+        { "col_head" : "Employee", "canSort" : true, "col_data" : "transusername", "index" : 2 },
+        { "col_head" : "Client", "canSort" : true, "col_data" : "clientname", "index" : 3 },
+        { "col_head" : "Item", "canSort" : true, "col_data" : "storageitemname", "index" : 4 },
+        { "col_head" : "Detail", "canSort" : true, "col_data" : "notes", "index" : 5 },
+        { "col_head" : "Date", "canSort" : true, "col_data" : "time_stamp", "index" : 6 }
+      ]
+    },
+    "TransactionsBins" :
+    {
+      "reportid"    : 27,
+      "title"       : "Bin Transactions",
+      "isGrouped"   : true,
+      "groupByFieldName" : "binname",
+      "row_detail"  :
+      [
+        { "col_head" : "Type", "canSort" : true, "col_data" : "type", "index" : 1 },
+        { "col_head" : "Employee", "canSort" : true, "col_data" : "transusername", "index" : 2 },
+        { "col_head" : "Client", "canSort" : true, "col_data" : "clientname", "index" : 3 },
+        { "col_head" : "Item", "canSort" : true, "col_data" : "storageitemname", "index" : 4 },
+        { "col_head" : "Detail", "canSort" : true, "col_data" : "notes", "index" : 5 },
+        { "col_head" : "Date", "canSort" : true, "col_data" : "time_stamp", "index" : 6 }
+      ]
+    },
+    "RequestsStorage" :
+    {
+      "reportid"    : 61,
+      "title"       : "Open Storage Requests",
+      "isGrouped"   : true,
+      "groupByFieldName" : "clientname",
+      "row_detail"  :
+      [
+        { "col_head" : "Item", "canSort" : true, "col_data" : "name", "index" : 1 },
+        { "col_head" : "Requested", "canSort" : true, "col_data" : "qty", "index" : 2 },
+        { "col_head" : "In stock", "canSort" : true, "col_data" : "item_qty", "index" : 3 },
+        { "col_head" : "Lot", "canSort" : true, "col_data" : "lotnumber", "index" : 4 },
+        { "col_head" : "Tag", "canSort" : true, "col_data" : "tag", "index" : 5 },
+        { "col_head" : "Label", "canSort" : true, "col_data" : "label", "index" : 6 },
+        { "col_head" : "Pallet", "canSort" : true, "col_data" : "palletname", "index" : 7 }
+      ]
+    },
+    "RequestsShipment" :
+    {
+      "reportid"    : 62,
+      "title"       : "Open Shipment Requests",
+      "isGrouped"   : true,
+      "groupByFieldName" : "clientname",
+      "row_detail"  :
+      [
+        { "col_head" : "Item", "canSort" : true, "col_data" : "productName", "index" : 1 },
+        { "col_head" : "Pull Request", "canSort" : true, "col_data" : "qty", "index" : 2 },
+        { "col_head" : "In stock", "canSort" : true, "col_data" : "qty_in_stock", "index" : 3 },
+        { "col_head" : "Lot", "canSort" : true, "col_data" : "lotnumber", "index" : 4 },
+        { "col_head" : "Tag", "canSort" : true, "col_data" : "tag", "index" : 5 },
+        { "col_head" : "Label", "canSort" : true, "col_data" : "label", "index" : 6 },
+        { "col_head" : "Pallet", "canSort" : true, "col_data" : "targetpalletNames", "index" : 7 }
+      ]
+    }
+  },
+  "SingleProvider":true,
+  "ClientRequestDaysDefault":14,
+  "storeOnlyOnEmptyPallet":true,
+  "defaultBinID":8,
+  "showOnlyAssociations": [
+    "Storage", "Shipment"
+  ],
+  "activeResources" : [
+    "Storagefacility",
+    "Provider",
+    "Storagebin",
+    "Storagepallet",
+    "Shipment",
+    "Storage",
+    "Storageitem",
+    "Workitem"
+  ],
+  "onlyShowForAdmin" : [
+    "Storage",
+    "Shipment",
+    "StorageFacility"
+  ],
+  "resourceNavigationsByRole" : {
+    "Client"    : ["Storageitem"],
+    "Employee"  : ["Workitem"],
+    "Provider"  : ["Storagepallet", "Storagebin", "Provider"]
+  },
+  "navigationTopstatic" : {
+      "Signup" : {
+          "displayText" : "Join",
+          "url"         : "/Signup"
+          },
+      "Login"   : {
+          "displayText" : "Login",
+          "url"         : "/Login"
+          }
+  },
+  "copyrights" :
+  {
+    "warehousedashboard" : {
+      "Name" : "warehousedashboard",
+      "License" : "MIT",
+      "URL" : "https://github.com/goability/warehousedashboard/blob/main/LICENSE",
+      "Description" : "Built on top of warehousedashboard, an open source project."
+    },
+    "Unsplash.com" :
+      {
+        "Name" : "Unsplash.com",
+        "License" : "Custom, MIT Compatible",
+        "URL" : "https://unsplash.com/license",
+        "Description" : "Sample photos provided by unsplash.com "
+      },
+    "eversql.com" :
+    {
+      "Name": "eversql.com",
+      "License":"give credit",
+      "URL": "https://www.eversql.com/faster-pagination-in-mysql-why-order-by-with-limit-and-offset-is-slow/",
+      "Description": "Pagination and sql enhancements"
+    },
+    "stackoverflow.com":
+    {
+      "Name": "stackoverflow.com",
+      "License":"give credit",
+      "URL": "stackoverflow.com",
+      "Description": "Misc credits"
+    },
+    "auto-complete typeahead":
+    {
+      "Name": "makitweb.com",
+      "License":"give credit",
+      "URL": "https://makitweb.com/jquery-ui-autocomplete-with-php-and-ajax/",
+      "Description": "Autocomplete for searching"
+    }
+  }
+}

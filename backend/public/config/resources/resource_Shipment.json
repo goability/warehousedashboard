@@ -1,0 +1,167 @@
+{
+    "navigationMenuText"        : "Shipments",
+    "navigationMenuURL"         : "/Shipment",
+    "displayName"               : "Shipment",
+    "formTitle"                 : "Shipments",
+    "resourceImageLarge"        : "shipments.jpg",
+    "resourceImageThumb"        : "",
+    "tableName"                 : "shipment",
+    "ownedByFieldName"          : "userid_requestor",
+    "ownedByResourceName"       : "User",
+    "indexFieldName"            : "id",
+    "displayFieldName"          : ["name"],
+    "orderByFieldName"          : "name",
+    "orderByDirection"          : "DESC",
+    "fields" : {
+                  "name"      : { "dataType"            : "string",
+                                    "formlabel"         : "Shipment Label",
+                                    "formcomponent"     : "text",
+                                    "maxlength": "40",
+                                    "componentsize" : "20",
+                                    "regex" : "/[^a-z_\\-0-9]/i"
+                                  },
+                  "userid_requestor"
+                              : { "dataType"            : "int",
+                                    "formlabel"         : "Requestor",
+                                    "formcomponent"     : "select",
+                                    "linkedFieldKey"    : "User.ID"
+                                  },
+                  "userid_approver"
+                              : { "dataType"            : "int",
+                                    "formlabel"         : "Approver",
+                                    "formcomponent"     : "select",
+                                    "linkedFieldKey"    : "User.ID"
+                                  },
+                  "userid_puller"
+                              : { "dataType"            : "int",
+                                    "formlabel"         : "Puller",
+                                    "formcomponent"     : "select",
+                                    "linkedFieldKey"    : "User.ID"
+                                  },
+                  "userid_receiver"
+                              : { "dataType"          : "int",
+                                    "formlabel"       : "Receiver",
+                                    "formcomponent"   : "select",
+                                    "linkedFieldKey"  : "User.ID"
+                                  },
+                  "itemid"      : { "dataType"        : "int",
+                                    "formlabel"       : "Item",
+                                    "formcomponent"   : "select",
+                                    "linkedFieldKey"  : "Storageitem.ID"
+                                  },
+                  "qty"         : { "dataType"        : "int",
+                                    "formlabel"       : "Quantity",
+                                    "formcomponent"   : "text",
+                                    "maxlength"       : "6",
+                                    "componentsize"   : "6",
+                                    "regex"           : "/[^0-9]/i"
+                                  },
+                  "confirmed_pulled_qty" : {
+                                      "dataType"        : "string",
+                                      "formlabel"       : "Confirmed Pull Qty",
+                                      "formcomponent"   : "text",
+                                      "maxlength": "7",
+                                      "componentsize" : "7",
+                                      "regex" : "/[^-0-9]/i"
+                                    },
+                  "lotnumber"   : { "dataType"        : "string",
+                                    "formlabel"       : "Lot",
+                                    "formcomponent"   : "text",
+                                    "maxlength"       : "40",
+                                    "componentsize"   : "20",
+                                    "regex" : "/[^a-z_\\-0-9]/i"
+                                  },
+                  "tag"        : { "dataType"         : "string",
+                                    "formlabel"       : "Tag",
+                                    "formcomponent"   : "text",
+                                    "maxlength"       : "40",
+                                    "componentsize"   : "20",
+                                    "regex" : "/[^a-z_\\-0-9]/i"
+                                  },
+                  "date_needed": { "dataType"         : "string",
+                                    "formlabel"       : "Date needed",
+                                    "formcomponent"   : "date",
+                                    "maxlength"       : "40",
+                                    "componentsize"   : "20",
+                                    "regex" : "/[^a-z_\\-0-9]/i"
+                                  },
+                  "date_approved": { "dataType"         : "string",
+                                    "formlabel"       : "Date Approved",
+                                    "formcomponent"   : "date",
+                                    "maxlength"       : "40",
+                                    "componentsize"   : "20",
+                                    "regex" : "/[^a-z_\\-0-9]/i"
+                                  },
+                  "date_shipped": { "dataType"         : "string",
+                                    "formlabel"       : "Date Shipped",
+                                    "formcomponent"   : "date",
+                                    "maxlength"       : "40",
+                                    "componentsize"   : "20",
+                                    "regex" : "/[^a-z_\\-0-9]/i"
+                                  },
+                  "notes"      : { "dataType"         : "string",
+                                  "formlabel"         : "Special Instructions",
+                                  "formcomponent"     : "textarea",
+                                  "maxlength": "200",
+                                  "rows":"5",
+                                  "cols":"20"
+                                }
+              },
+              "associativeCollections" :
+                        {
+                          "shiprequests" :
+                          {
+                            "dataType" : "int",
+                            "formlabel": "Requested",
+                            "formcomponent": "list",
+                            "associativeKeyField": "shipmentrequests.shipmentid",
+                            "associationObjects" :
+                            {
+                                "User" :
+                                {
+                                  "canAdd" : false,
+                                  "LinkedFieldName" : "shipmentrequests.userid",
+                                  "ListSize":4,
+                                  "addButtonText": "do not show",
+                                  "displayText" : "Pending"
+                                }
+                            }
+                          },
+                          "shipapprovals" :
+                          {
+                            "dataType" : "int",
+                            "formlabel": "In-Process",
+                            "formcomponent": "list",
+                            "associativeKeyField": "shipmentapprovals.shipmentid",
+                            "associationObjects" :
+                            {
+                                "User" :
+                                {
+                                  "canAdd" : false,
+                                  "LinkedFieldName" : "shipmentapprovals.userid",
+                                  "ListSize":4,
+                                  "addButtonText": "do not show this",
+                                  "displayText" : "In Process"
+                                }
+                            }
+                          },
+                          "shipfulfillments" :
+                          {
+                            "dataType" : "int",
+                            "formlabel": "Shipment Fulfilled",
+                            "formcomponent": "list",
+                            "associativeKeyField": "shipmentfulfilled.shipmentid",
+                            "associationObjects" :
+                            {
+                                "User" :
+                                {
+                                  "canAdd" : false,
+                                  "LinkedFieldName" : "shipmentfulfilled.userid",
+                                  "ListSize":4,
+                                  "addButtonText": "do not show",
+                                  "displayText" : "Shipped"
+                                }
+                            }
+                          }
+                        }
+  }

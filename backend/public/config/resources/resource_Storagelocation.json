@@ -1,0 +1,49 @@
+{
+      "navigationMenuText"        : "Locations",
+      "navigationMenuURL"         : "/Storagelocation",
+      "displayName"               : "Location",
+      "formTitle"                 : "Storage Locations",
+      "resourceImageLarge"        : "locations.jpg",
+      "resourceImageThumb"        : "",
+      "tableName"                 : "storagelocation",
+      "ownedByResourceName"       : "Storagefacility",
+      "ownedByFieldName"          : "facilityid",
+      "indexFieldName"            : "id",
+      "displayFieldName"          : ["name"],
+      "orderByFieldName"          : "name",
+      "orderByDirection"          : "DESC",
+      "fields" : {
+                    "facilityid" : {"dataType" : "int", "formlabel": "Facility", "formcomponent": "select",  "linkedFieldKey": "Storagefacility.ID"},
+                    "name" : {"dataType" : "string", "formlabel": "Name", "formcomponent": "text", "maxlength": "40", "componentsize" : "20", "regex" : "/[^a-z_\\-0-9]/i"},
+                    "row" : {"dataType" : "string", "formlabel": "Row", "formcomponent": "text", "maxlength": "6", "componentsize" : "6", "regex" : "/[^a-z_\\-0-9]/i"},
+                    "col" : {"dataType" : "string", "formlabel": "Col", "formcomponent": "text", "maxlength": "6", "componentsize" : "6", "regex" : "/[^a-z_\\-0-9]/i"},
+                    "shelf" : {"dataType" : "string", "formlabel": "Shelf", "formcomponent": "text", "maxlength": "6", "componentsize" : "6", "regex" : "/[^a-z_\\-0-9]/i"},
+                    "xshelf" : {"dataType" : "string", "formlabel": "Shelf X", "formcomponent": "text", "maxlength": "6", "componentsize" : "6", "regex" : "/[^0-9]/i"},
+                    "yshelf" : {"dataType" : "string", "formlabel": "Shelf Y", "formcomponent": "text", "maxlength": "6", "componentsize" : "6", "regex" : "/[^0-9]/i"},
+                    "zshelf" : {"dataType" : "string", "formlabel": "Shelf Z", "formcomponent": "text", "maxlength": "6", "componentsize" : "6", "regex" : "/[^0-9]/i"},
+                    "facilitycoords" : {"dataType" : "string", "formlabel": "Facility Coordinates", "formcomponent": "text"},
+                    "tags" : {"dataType" : "string", "formlabel": "Tags", "formcomponent": "text", "maxlength": "20", "componentsize" : "20", "regex" : "/[^a-z_\\-0-9]/i"},
+                    "lat" : {"dataType" : "string", "formlabel": "Latitude", "formcomponent": "text", "maxlength": "8", "componentsize" : "8", "regex" : "/[^a-z_\\-0-9]/i"},
+                    "lng" : {"dataType" : "string", "formlabel": "Longitude", "formcomponent": "text", "maxlength": "8", "componentsize" : "8", "regex" : "/[^a-z_\\-0-9]/i"},
+                    "notes" : {"dataType" : "string", "formlabel": "Notes", "formcomponent": "textarea", "maxlength": "200", "rows":"5", "cols":"20"}
+                },
+      "associativeCollections" :
+                {
+                  "locationinventory" :
+                  {
+                    "dataType" : "int",
+                    "formlabel": "Inventory",
+                    "formcomponent": "list",
+                    "associativeKeyField": "storagelocationinventory.locationid",
+                    "associationObjects" :
+                    {
+                        "Storagebin" :
+                        { "LinkedFieldName" : "storagelocationinventory.binid",
+                          "ListSize":4,
+                          "addButtonText": "add bin",
+                          "displayText" : "Bins"
+                        }
+                    }
+                  }
+                }
+    }
